@@ -2,14 +2,22 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-chrome_driver_path = "/Users/brendanmurray/Documents/Development/Drivers/chromedriver"
-driver = webdriver.Chrome(executable_path=chrome_driver_path)
-
+source = "https://www.redcross.org.uk/shop/find-a-charity-shop"
+driver_path = "/Users/brendanmurray/Documents/Development/Drivers/chromedriver"
+driver = webdriver.Chrome(executable_path=driver_path)
 
 def run_search():
-    driver.get('https://www.redcross.org.uk/shop/find-a-charity-shop')
+    driver.get(source)
     location = driver.find_element(By.ID, 'location')
     location.send_keys('e107an')
     location.send_keys(Keys.ENTER)
+    print('in loop')
+  
 
-run_search()
+for i in range(7):
+    print(f"start loop {i}")
+    run_search()
+    print(f"end loop {i}")
+driver.close()
+   
+
